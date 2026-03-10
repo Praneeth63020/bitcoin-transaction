@@ -1,6 +1,14 @@
 # bitcoin-transaction
 Bitcoin Transaction Lab
 
+GROUP MEMBERS:
+ROLL NUMBERS                                             NAMES
+240001030                                             E.Mahidhar Reddy
+240001050                                             P.Ashok
+240008009                                             B.Praneeth
+240004013                                             CH.Santhosh
+
+
 Legacy P2PKH and Nested SegWit (P2SH-P2WPKH) transaction creation using Bitcoin Core RPC in C.
 
 This project demonstrates the creation, signing, broadcasting, and analysis of Bitcoin transactions using a local Bitcoin Core node running in regtest mode. The goal of the assignment is to understand how Bitcoin transactions work internally and to compare the behavior and efficiency of Legacy transactions and SegWit transactions.
