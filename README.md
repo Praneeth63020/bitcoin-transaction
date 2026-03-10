@@ -3,227 +3,139 @@ Bitcoin Transaction Lab
 
 Legacy P2PKH and Nested SegWit (P2SH-P2WPKH) transaction creation using Bitcoin Core RPC in C.
 
-This project demonstrates how Bitcoin transactions work internally by interacting with a local Bitcoin Core node running in regtest mode.
-Two types of transactions are created and analyzed:
+This project demonstrates the creation, signing, broadcasting, and analysis of Bitcoin transactions using a local Bitcoin Core node running in regtest mode. The goal of the assignment is to understand how Bitcoin transactions work internally and to compare the behavior and efficiency of Legacy transactions and SegWit transactions.
 
-Legacy P2PKH transaction chain
+The project is implemented in the C programming language and communicates with Bitcoin Core through RPC calls. Using these RPC calls, the programs generate addresses, create raw transactions, sign them with the wallet, broadcast them to the network, and analyze their scripts and structures.
 
-SegWit P2SH-P2WPKH transaction chain
+The lab is divided into three main parts.
 
-Finally, the two transaction types are compared based on transaction size, virtual size, and weight.
+Tools and Technologies Used
 
-Tools and Technologies
+The following tools and technologies were used to implement and analyze the Bitcoin transactions:
 
-C Programming Language
+Programming Language
 
-Bitcoin Core (regtest mode)
+C
 
-Bitcoin RPC API
+Bitcoin Environment
 
-MSYS2 + GCC
+Bitcoin Core
 
-cJSON library
+Regtest Mode
 
-curl library
+Libraries
 
-Git & GitHub
+libcurl (for RPC communication with Bitcoin Core)
 
-Project Structure
-bitcoin-transaction
-│
-├── part1_legacy.c
-├── part2_p2sh_p2wpkh.c
-├── part3_compare.c
-├── bitcoin_lab_common.c
-├── bitcoin_lab_common.h
-│
-├── screenshots
-│   ├── part1_execution.png
-│   ├── part1_scriptsig.png
-│   ├── part2_execution.png
-│   ├── part2_witness.png
-│   └── part3_comparison.png
-│
-└── README.md
-Running Bitcoin Core (Regtest)
+cJSON (for parsing JSON responses)
 
-Start the Bitcoin node in regtest mode.
+Development Tools
 
-bitcoind.exe -regtest
+MSYS2 / MinGW GCC compiler
 
-Verify the node is running:
+Visual Studio Code
 
-bitcoin-cli -regtest getblockchaininfo
-Compilation
+Version Control
 
-Compile the programs using GCC.
+Git
 
-gcc part1_legacy.c bitcoin_lab_common.c -o part1_legacy -lcurl -lcjson
-gcc part2_p2sh_p2wpkh.c bitcoin_lab_common.c -o part2_p2sh_p2wpkh -lcurl -lcjson
-gcc part3_compare.c bitcoin_lab_common.c -o part3_compare -lcurl -lcjson
-Part 1 — Legacy P2PKH Transactions
+GitHub
 
-This program creates and broadcasts a chain of legacy P2PKH transactions.
+Part 1 – Legacy P2PKH Transactions
 
-Transaction flow:
+The first program creates and broadcasts a chain of Legacy P2PKH transactions. In this process, three addresses are generated and transactions are created between them.
+
+The transaction flow in this part is:
 
 Miner → Address A → Address B → Address C
 
-Steps performed by the program:
+First, blocks are mined so that the wallet has mature coins in the regtest environment. The miner address then sends coins to Address A. After confirming the transaction by mining another block, the program identifies the UTXO belonging to Address A.
 
-Generate addresses
+Using this UTXO, a raw transaction is created from Address A to Address B. The raw transaction is then signed by the wallet and broadcast to the network. After confirmation, the program identifies the UTXO belonging to Address B and creates another transaction from Address B to Address C.
 
-Mine blocks to obtain spendable coins
+During this process the raw transactions are decoded to analyze the structure of the transaction scripts. The locking script used in Legacy transactions follows the Pay-to-Public-Key-Hash (P2PKH) structure, which requires a valid signature and public key to unlock the funds.
 
-Fund address A
+Screenshots of the execution output and decoded script information are included in the screenshots folder.
 
-Create raw transaction A → B
+Part 2 – Nested SegWit (P2SH-P2WPKH) Transactions
 
-Sign transaction
+The second program implements transactions using SegWit wrapped inside P2SH addresses. This is called Nested SegWit.
 
-Broadcast transaction
-
-Mine block to confirm
-
-Create transaction B → C
-
-Broadcast and confirm
-
-Run the program:
-
-./part1_legacy.exe
-
-Example output includes:
-
-Generated addresses
-
-Raw transaction hex
-
-Signed transaction
-
-Transaction IDs
-
-Screenshot to include
-
-Take screenshot of:
-
-program execution
-
-addresses generated
-
-transaction IDs
-
-Place here:
-
-screenshots/part1_execution.png
-
-Add in README:
-
-![Part1 Execution](screenshots/part1_execution.png)
-Script Analysis (Legacy)
-
-The program decodes the raw transaction and prints the scriptSig used for unlocking.
-
-Example script:
-
-OP_DUP OP_HASH160 <pubKeyHash> OP_EQUALVERIFY OP_CHECKSIG
-
-This script verifies that the provided signature matches the public key hash.
-
-Screenshot to include
-
-Screenshot showing:
-
-decoded transaction
-
-scriptSig field
-
-screenshots/part1_scriptsig.png
-
-Add in README:
-
-![Legacy ScriptSig](screenshots/part1_scriptsig.png)
-Part 2 — Nested SegWit (P2SH-P2WPKH)
-
-This program creates transactions using SegWit wrapped in P2SH.
-
-Transaction flow:
+The transaction flow in this part is:
 
 Miner → Address A' → Address B' → Address C'
 
-SegWit separates signature data from the main transaction body, which reduces transaction size.
+The process is similar to Part 1. First, blocks are mined to generate spendable coins. The miner funds Address A'. Once the funding transaction is confirmed, the program finds the UTXO belonging to Address A'.
 
-Steps performed:
+A raw transaction is then created from Address A' to Address B'. This transaction is signed using the wallet and broadcast to the network. After confirmation, another transaction is created from Address B' to Address C'.
 
-Generate SegWit addresses
+The major difference between Legacy and SegWit transactions appears in how signatures are stored. In SegWit transactions, the signature and public key are placed in a separate witness structure instead of inside the scriptSig field. This reduces the effective size of the transaction and improves efficiency.
 
-Fund address A'
+Screenshots showing SegWit transaction execution and witness stack data are included in the screenshots folder.
 
-Create raw transaction A' → B'
+Part 3 – Transaction Size Comparison
 
-Sign transaction
+The third part of the lab compares the Legacy and SegWit transactions created in the previous parts. The comparison is performed using the transaction IDs generated during execution.
 
-Broadcast transaction
+The analysis focuses on three key metrics:
 
-Mine block to confirm
+Transaction size
 
-Create transaction B' → C'
+Virtual size (vbytes)
 
-Broadcast and confirm
+Transaction weight
 
-Run the program:
+Legacy transactions store signatures inside the main transaction body. This increases the overall size of the transaction and leads to higher fees.
 
-./part2_p2sh_p2wpkh.exe
-Screenshot to include
+SegWit transactions move signature data into the witness structure. This reduces the effective size of the transaction and lowers the virtual size and weight. As a result, SegWit transactions are more efficient and allow more transactions to fit into a block.
 
-Program execution with addresses and txids.
+The comparison results demonstrate that SegWit transactions achieve better scalability and lower transaction costs.
 
-screenshots/part2_execution.png
+Screenshots of the comparison results are available in the screenshots folder.
 
-Add in README:
+Key Observations
 
-![SegWit Execution](screenshots/part2_execution.png)
-SegWit Witness Analysis
+Legacy transactions place signature data directly inside the transaction scripts. This increases transaction size and affects scalability.
 
-SegWit transactions store signature data in a witness stack instead of scriptSig.
+SegWit separates signature data from the transaction body and stores it in the witness structure. This reduces the effective size of the transaction and improves network efficiency.
 
-Example witness stack:
+SegWit also solves the transaction malleability problem and enables additional improvements such as the Lightning Network.
 
-Signature
-Public Key
+Repository Structure
 
-This allows:
+The repository is organized to clearly separate the source code, screenshots, and report.
 
-reduced transaction size
+bitcoin-transaction
+│
+├── README.md
+│
+├── src
+│ ├── part1_legacy.c
+│ ├── part2_p2sh_p2wpkh.c
+│ ├── part3_compare.c
+│ ├── bitcoin_lab_common.c
+│ └── bitcoin_lab_common.h
+│
+├── screenshots
+│ ├── part1_execution.png
+│ ├── part1_scriptsig.png
+│ ├── part2_execution.png
+│ ├── part2_witness.png
+│ └── part3_comparison.png
+│
+└── report
+└── bitcoin_transaction_lab_report.pdf
 
-improved scalability
+The src folder contains the C source files used to implement the transaction programs.
 
-elimination of transaction malleability
+The screenshots folder contains images showing execution outputs, script analysis, and transaction comparison results.
 
-Screenshot to include
+The report folder contains the detailed report for the lab assignment.
 
-Screenshot showing witness stack output.
+Conclusion
 
-screenshots/part2_witness.png
+This lab provided practical experience with Bitcoin transaction construction and analysis. By implementing both Legacy and SegWit transaction chains, it becomes clear how different transaction formats affect efficiency and scalability.
 
-Add in README:
+The comparison between Legacy and SegWit transactions shows that SegWit provides clear advantages in terms of reduced transaction size, lower fees, and improved network performance.
 
-![SegWit Witness](screenshots/part2_witness.png)
-Part 3 — Transaction Size Comparison
-
-The third program compares Legacy vs SegWit transactions.
-
-Run:
-
-./part3_compare.exe <legacy_txid> <segwit_txid>
-
-Example comparison:
-
-Metric	Legacy	SegWit
-Size (bytes)	225	247
-Virtual Size	225	166
-Weight	900	661
-
-Observation:
-
-SegWit transactions have lower virtual size and weight, which reduces transaction fees.
+Through this project, the internal structure of Bitcoin transactions, script execution, and the benefits of SegWit were explored in detail.
