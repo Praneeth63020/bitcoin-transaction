@@ -1,0 +1,62 @@
+Transaction Size Comparison
+
+This section compares the Legacy P2PKH transaction and the Nested SegWit (P2SH-P2WPKH) transaction generated in Parts 1 and 2.
+
+The comparison focuses on three metrics:
+
+Transaction Size
+
+Virtual Size (vbytes)
+
+Transaction Weight (wu)
+
+Legacy P2PKH Transaction:
+
+Transaction ID:
+
+0aa1701fc5c24178e71d246eaa52f69595942ab32625fb9f1a4c186492db3dc0
+
+Transaction Size:
+
+225 bytes
+
+Virtual Size:
+
+225 vbytes
+
+Transaction Weight:
+
+900 weight units
+
+Nested SegWit (P2SH-P2WPKH) Transaction:
+
+Transaction ID:
+
+248d78c47e70dca833934e9784a83f4315ddf132059607daf56ea47c7471b351
+
+Transaction Size:
+
+247 bytes
+
+Virtual Size:
+
+166 vbytes
+
+Transaction Weight:
+
+661 weight units
+
+Comparison Summary:
+Metric	Legacy P2PKH	P2SH-P2WPKH (SegWit)
+Transaction Size	225 bytes	247 bytes
+Virtual Size	225 vbytes	166 vbytes
+Transaction Weight	900 wu	661 wu
+Key Observations
+
+Legacy transactions store the signature data directly inside the transaction input scripts. Because of this, the entire signature contributes to the transaction size.
+
+SegWit transactions move most of the signature data into the witness structure, which is stored separately from the main transaction body.
+
+Although the raw transaction size of SegWit may appear slightly larger in bytes, the virtual size and weight are significantly lower. This means SegWit transactions are cheaper in terms of transaction fees and allow more transactions to fit inside a block.
+
+This demonstrates the scalability benefits introduced by the SegWit upgrade.
