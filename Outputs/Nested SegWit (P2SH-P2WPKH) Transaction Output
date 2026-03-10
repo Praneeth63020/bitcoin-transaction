@@ -1,0 +1,140 @@
+Nested SegWit (P2SH-P2WPKH) Transaction Output
+Generated Addresses:
+
+Miner Address:
+miSg7U2NCj6ND7Ea1fvvvRiFXiLt6fmpaS
+
+Address A':
+2N1D7A2DfQs9ib3JeHi37BzDPvNDwaTVKVt
+
+Address B':
+2N9n42SZWRZW38sz7E4Qszs21UzGMe6Zn5e
+
+Address C':
+2N6rvxcadsB5vo94QZ2LWftaR743Cwf5MYb
+
+Funding Transaction:
+
+Funding TXID:
+
+8effa723208e607b2075b0cce339cc5d8de1551ef499ee65f9b501bbea30b359
+
+UTXO for Address A':
+
+Transaction ID:
+8effa723208e607b2075b0cce339cc5d8de1551ef499ee65f9b501bbea30b359
+
+Output Index:
+0
+
+Amount:
+10 BTC
+
+Transaction A' → B':
+
+Signed Transaction TXID:
+
+36a5a96f1a36a60706def70c6594efc1f80ef83e60813011280efc7335d0d991
+
+Transaction Size:
+247 bytes
+
+Virtual Size:
+166 vbytes
+
+Transaction Weight:
+661
+
+Locking Script (Output to Address B'):
+
+Script Type:
+P2SH
+
+Script Assembly:
+
+OP_HASH160 b55697408d6a71955960619a7b626080a1689640 OP_EQUAL
+
+Script Hex:
+
+a914b55697408d6a71955960619a7b626080a168964087
+
+scriptSig (Nested SegWit Redeem Script):
+
+Assembly:
+
+0014e5e895d22e373e687ceaa7b4e99a6ef488ad1c27
+
+Hex:
+
+160014e5e895d22e373e687ceaa7b4e99a6ef488ad1c27
+
+Witness Stack (SegWit Unlocking Data):
+
+Element 0 – Signature:
+
+3044022067bc580ceaf570cb0e4570ff5419eb265160359c2f57703f7c5e130fb93c49b202201a15e3901cf2ae4d696115c437269588864dde0cc2b718dd8d74d8402c3becd701
+
+Element 1 – Public Key:
+
+036aec0ead1f66e4918463fa742db0d4bfd8219160ada2109cdbe3289e7820be35
+
+Transaction B' → C':
+
+Signed Transaction TXID:
+
+28d56a50f9ea20b24ebcb7956be0812bed27ab623afc2902507d4b441549977b
+
+Transaction Size:
+
+247 bytes
+
+Virtual Size:
+
+166 vbytes
+
+Transaction Weight:
+
+661
+
+Locking Script (Output to Address C'):
+
+Script Type:
+P2SH
+
+Script Assembly:
+
+OP_HASH160 955a6517fea0871f3fbf7e44c7b2de517b153055 OP_EQUAL
+
+Script Hex:
+
+a914955a6517fea0871f3fbf7e44c7b2de517b15305587
+
+scriptSig:
+
+Assembly:
+
+00141954b1ec4fa87d9c849988c1fdb0ca5265dc0c8d
+
+Hex:
+
+1600141954b1ec4fa87d9c849988c1fdb0ca5265dc0c8d
+
+Witness Stack:
+
+Element 0 – Signature:
+
+3044022011efc9f743c77ec59a0370ec9f9b985fa0d1322d70b99e0c748c407635d06b9a02202b955cbfd55f52860bc47d40a958229b1c1885ef281d72695d4f9aba4c7f09a201
+
+Element 1 – Public Key:
+
+02fa4548efb78255c8f736a60d9c57eacba128f2e52c63f061059879cc4b0b2051
+
+Final Important TXIDs:
+
+Transaction A' → B':
+
+36a5a96f1a36a60706def70c6594efc1f80ef83e60813011280efc7335d0d991
+
+Transaction B' → C':
+
+28d56a50f9ea20b24ebcb7956be0812bed27ab623afc2902507d4b441549977b
