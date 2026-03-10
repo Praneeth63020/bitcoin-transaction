@@ -1,0 +1,105 @@
+Legacy P2PKH Transaction Output
+Generated Addresses
+
+Miner Address
+mtZ66U9XgJD2bnJRsESNhanUyXRMfjvjBt
+
+Address A
+mhBu4ePoQFK4SyScby7j4nbj7qKYQ6GT8g
+
+Address B
+n3RMJKw5wnq2myjACDFBnuj7f3nnNBo2XK
+
+Address C
+mtVAbhooodgNd1H1eLJ1CFz1ChU4LZaF5P
+
+Funding Transaction
+
+Funding TXID
+bc311bbe83482e6418e3ac99f0cf4ff8e0610a61c45e3ba0ce37e7276229023d
+
+UTXO for Address A
+
+Transaction ID
+bc311bbe83482e6418e3ac99f0cf4ff8e0610a61c45e3ba0ce37e7276229023d
+
+Output Index
+1
+
+Amount
+10 BTC
+
+Transaction A → B
+
+Signed Transaction TXID
+
+c2dadf463f11a8a55c02246bba5eb8b2488a80092afe32c3865ac3f6765065c0
+
+Transaction Size
+225 bytes
+
+Virtual Size
+225 vbytes
+
+Transaction Weight
+900
+
+Locking Script (Output to Address B)
+
+Script Type
+P2PKH
+
+Script Assembly
+
+OP_DUP OP_HASH160 f043798ef79039625a06e77c8cfe8ac4350a15a5 OP_EQUALVERIFY OP_CHECKSIG
+
+Script Hex
+
+76a914f043798ef79039625a06e77c8cfe8ac4350a15a588ac
+
+Unlocking Script (scriptSig)
+
+Signature + Public Key used to unlock the input.
+
+Assembly
+
+304402203fc861718e6cbbb87647979a5ae61623f9d34f44d86d1e678b671adbb5e34fe802207cdaa0a609d11a9fb1f1b1767b511a2256f716877635ce34470dad3982c2dafd
+02b80bfb04099c63439f7600b6215f4a20148ae6a9140436003f346e0f64bd4925
+
+Transaction B → C
+
+Signed Transaction TXID
+
+fc4edb0615a6997724bfb4121f56c9749a8b9c49ccf89268c87dd1c254e88e9d
+
+Transaction Size
+225 bytes
+
+Virtual Size
+225 vbytes
+
+Transaction Weight
+900
+
+Locking Script (Output to Address C)
+
+Script Type
+P2PKH
+
+Script Assembly
+
+OP_DUP OP_HASH160 8e43130b576dfbd34291502be38b19641a96b0b0 OP_EQUALVERIFY OP_CHECKSIG
+
+Script Hex
+
+76a9148e43130b576dfbd34291502be38b19641a96b0b088ac
+
+Final Important TXIDs
+
+Transaction A → B
+
+c2dadf463f11a8a55c02246bba5eb8b2488a80092afe32c3865ac3f6765065c0
+
+Transaction B → C
+
+fc4edb0615a6997724bfb4121f56c9749a8b9c49ccf89268c87dd1c254e88e9d
