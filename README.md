@@ -140,7 +140,7 @@ The screenshots folder contains images showing execution outputs, script analysi
 
 The report folder contains the detailed report for the lab assignment.
 
-Conclusion
+Conclusion:
 
 This lab provided practical experience with Bitcoin transaction construction and analysis. By implementing both Legacy and SegWit transaction chains, it becomes clear how different transaction formats affect efficiency and scalability.
 
